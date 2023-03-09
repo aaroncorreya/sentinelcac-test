@@ -1,4 +1,4 @@
-﻿$content = Get-Content -Path .\template.json -raw
+﻿$content = Get-Content -Path .\validtemplate.json -raw
 New-Item -ItemType Directory ".\GeneratedRules"
 
 for (($i = 0); $i -lt 1000; $i++)
