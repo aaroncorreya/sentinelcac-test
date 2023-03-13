@@ -1,0 +1,56 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/e8c0f318-a5c4-4f43-a6d9-550171b3168f')]",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/e8c0f318-a5c4-4f43-a6d9-550171b3168f')]",
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+      "kind": "Scheduled",
+      "apiVersion": "2021-03-01-preview",
+      "properties": {
+        "displayName": "Valid Analytic Rule 1 - e8c0f318-a5c4-4f43-a6d9-550171b3168f",
+        "description": "DESCRIPTION CHECK",
+        "severity": "High",
+        "enabled": false,
+        "query": "SecurityAlert",
+        "queryFrequency": "PT5H",
+        "queryPeriod": "PT5H",
+        "triggerOperator": "GreaterThan",
+        "triggerThreshold": 0,
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [],
+        "alertRuleTemplateName": null,
+        "incidentConfiguration": {
+          "createIncident": true,
+          "groupingConfiguration": {
+            "enabled": false,
+            "reopenClosedIncident": false,
+            "lookbackDuration": "PT5H",
+            "matchingMethod": "AllEntities",
+            "groupByEntities": [],
+            "groupByAlertDetails": [],
+            "groupByCustomDetails": []
+          }
+        },
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "alertDetailsOverride": {
+          "alertDisplayNameFormat": "alert name {{AlertName}}",
+          "alertDescriptionFormat": "DESC test {{Description}}",
+          "alertTacticsColumnName": null,
+          "alertSeverityColumnName": null
+        },
+        "customDetails": null,
+        "entityMappings": null
+      }
+    }
+  ]
+}

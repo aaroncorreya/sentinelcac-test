@@ -17,7 +17,7 @@
         "displayName": "Valid Analytic Rule 1 - {guid}",
         "description": "DESCRIPTION CHECK",
         "severity": "High",
-        "enabled": true,
+        "enabled": false,
         "query": "SecurityAlert",
         "queryFrequency": "PT5H",
         "queryPeriod": "PT5H",
