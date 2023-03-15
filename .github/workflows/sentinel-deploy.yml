@@ -1,4 +1,4 @@
-name: Deploy Content to acorreya-prod-test [3a0af645-1f47-4721-9ff5-426266a9df50]
+name: POC for Protected Branches
 # Note: This workflow will deploy everything in the root directory.
 # To deploy content only from a specific path (for example SentinelContent):
 #   1. Add the target path to the "paths" property like such
@@ -11,11 +11,11 @@ name: Deploy Content to acorreya-prod-test [3a0af645-1f47-4721-9ff5-426266a9df50
 
 on: 
   push:
-    branches: [ ]
+    branches: [ 'poc' ]
     paths:
     - '**'
     - '!.github/workflows/**'  # this filter prevents other workflow changes from triggering this workflow
-    - '.github/workflows/sentinel-deploy-3a0af645-1f47-4721-9ff5-426266a9df50.yml'
+    - '.github/workflows/sentinel-deploy.yml'
 
 jobs:
   deploy-content:
@@ -70,8 +70,9 @@ jobs:
         creds: ${{ secrets.AZURE_SENTINEL_CREDENTIALS_3a0af6451f4747219ff5426266a9df50 }}
         enable-AzPSSession: true
 
-    - name: Checkout
-      uses: actions/checkout@v1
+    - uses: actions/checkout@v3
+      with:
+        ref: poc
     
     - name: Deploy Content to Azure Sentinel
       uses: azure/powershell@v1
